@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Калькулятор стоимости</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  input {
+    margin: 5px;
+    padding: 5px;
+    width: 150px;
+  }
+  button {
+    padding: 5px 10px;
+    margin-top: 10px;
+  }
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h2>Калькулятор стоимости</h2>
+
+<label for="area">Площадь (м²):</label>
+<input type="number" id="area" placeholder="Введите площадь" />
+
+<br />
+
+<label for="price">Цена за м²:</label>
+<input type="number" id="price" placeholder="Введите цену за м²" />
+
+<br />
+
+<button onclick="calculate()">Рассчитать</button>
+
+<div id="result"></div>
+
+<script>
+function calculate() {
+    const area = parseFloat(document.getElementById('area').value);
+    const pricePerM2 = parseFloat(document.getElementById('price').value);
+    
+    if (isNaN(area) || isNaN(pricePerM2)) {
+        document.getElementById('result').innerText = 'Пожалуйста, введите оба значения.';
+        return;
+    }
+    
+    const totalCost = area * pricePerM2;
+    
+    document.getElementById('result').innerText = 'Общая стоимость: ' + totalCost.toFixed(2) + ' рублей';
+}
+</script>
+
+</body>
+</html>
